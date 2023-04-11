@@ -5,7 +5,7 @@
 
     <form class="home_form" method="POST" action="{{ route('updateSocial', ['id'=>isset($socialMedia->id)? $socialMedia->id : 0]) }}">
         @csrf @method('PUT')
-        <h2>عن الاكاديمية</h2>
+        <h2>مواقع التواصل </h2>
         <input class="w-full p-10 b-none rad-6" type="text" placeholder="موقع" name="location" value="{{$socialMedia->location ?? ''}}"/>
         <input class="w-full p-10 b-none rad-6" type="text" placeholder="رقم الجوال" name="phone" value="{{$socialMedia->phone ?? ''}}"/>
         <input class="w-full p-10 b-none rad-6" type="text" placeholder="ابريد الايكتروني" name="email" value="{{$socialMedia->email ?? ''}}"/>
