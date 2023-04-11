@@ -53,17 +53,25 @@ class AdmissionRequirementsController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(string $id)
+    public function edit($id)
     {
-        //
+        $editRequirements = AdmissionRequirements::find($id);
+        return view('admin.editRequirements', compact('editRequirements'));
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+     public function updated(Request $request, $id)
     {
-        //
+        // dd($id);
+        $updateRequirements = AdmissionRequirements::find($id);
+        $updateRequirements->requirement = $request->input('requirement');
+        $updateRequirements->save();
+        // dd($updateProgram);
+        $admissionRequirements = AdmissionRequirements::all();
+        return view('admin.admissionRequirements',['admissionRequirements'=>$admissionRequirements]);
+        // return redirect(route('program',['updateProgram'=>$updateProgram]));
     }
 
     /**

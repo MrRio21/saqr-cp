@@ -12,11 +12,19 @@ class AdminController extends Controller
     public function admin(){
         $allUsers = User::all();
         // dd($allUsers);
-        return view('admin.index',['allUsers'=>$allUsers]);
+        $count = User::count();
+
+        return view('admin.index',['allUsers'=>$allUsers] , compact('count'));
         // return view('admin.index');
     }
 
+
+
     public function login(){
+        return view('admin.login');
+    }
+     function logout() {
+        auth()->logout();
         return view('admin.login');
     }
     public function x(){

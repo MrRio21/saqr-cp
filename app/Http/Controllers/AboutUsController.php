@@ -13,7 +13,8 @@ class AboutUsController extends Controller
      */
     public function about()
     {
-        $about = AboutUs::find(1);
+        $about = AboutUs::get()->first();
+        // dd($about);
         return view('admin.about',['about'=>$about]);
     }
 
@@ -45,17 +46,28 @@ class AboutUsController extends Controller
      */
     public function update(Request $request, $id)
     {
-        // dd($request);
-        // dd($id);
-        $editAbout = AboutUs::find($id);
-        $editAbout->about = $request->input('about');
+        $request->validate([
+            'about'=>'required'
+        ]);
+
+        if($id != 0){
+            $editAbout = AboutUs::find($id);
+            $editAbout->about = $request->input('about');
+            $editAbout->save();
+            // return $editAbout;
+        }
+        else{
+            $editAbout = AboutUs::create([
+                'about'=>$request['about']
+            ]);
+            // return $editAbout;
+        }
         // dd($editAbout);
-        $editAbout->save();
-        $about = AboutUs::all();
         Alert::success('تم التعديل');
 
-        return back();
-        
+        return view('admin.about',['about'=>$editAbout]);
+
+
     }
 
     /**

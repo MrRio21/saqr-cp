@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Models\Slide;
+use App\Models\SlideItem;
+use RealRashid\SweetAlert\Facades\Alert;
 use Illuminate\Http\Request;
 
 class SlidesController extends Controller
@@ -12,7 +14,8 @@ class SlidesController extends Controller
      */
     public function index()
     {
-        //
+        $slide=Slide::all();
+        return view('admin.slide',['slide'=>$slide]);
     }
 
     /**
@@ -20,32 +23,51 @@ class SlidesController extends Controller
      */
     public function create()
     {
-        //
+        return view('admin.storeSlide');
     }
 
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
-    {
-        $request->validate([
-            'title'=>['required','string','min:4','max:255'],
-            'heading'=>['required','string','min:4','max:255'],
-            'description'=>['required','string','min:4'],
-        ]);
-        Slide::create([
-            'title'=>$request['title'],
-            'heading'=>$request['heading'],
-            'description'=>$request['description'],
+
+   public function store(Request $request)
+{
+    // Validate the request data
+    $validatedData = $request->validate([
+        'title' => ['required','string','min:4'],
+        'heading' => ['required','string','min:4'],
+        'description' =>['required','string','min:4'],
+        'items.*' => 'required',
+    ]);
+
+    // Create a new slide in the "slides" table
+    $slide = Slide::create([
+        'title' => $validatedData['title'],
+        'heading' => $validatedData['heading'],
+        'description' => $validatedData['description'],
+    ]);
+
+    // Create new slide items in the "slide_items" table
+    foreach ($validatedData['items'] as $item) {
+        SlideItem::create([
+            'item' => $item,
+            'slide_id' => $slide->id,
         ]);
     }
+    $slide = Slide ::all();
+
+    Alert::success('تهانينا', 'تم اضافة عضو في  شرائح ^^');
+    
+
+    return view('admin.slide',['slide'=>$slide]);
+}
 
     /**
      * Display the specified resource.
      */
     public function show(Slide $slides)
     {
-        //
+
     }
 
     /**
@@ -67,8 +89,11 @@ class SlidesController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Slide $slides)
-    {
-        //
+    public function destroy($id){
+        $deleteSLide = Slide::find($id)->delete();
+        if($deleteSLide){
+            SlideItem ::where('slide_id',$id)->delete();
+        }
+        return back();
     }
 }

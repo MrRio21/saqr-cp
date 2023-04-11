@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Models\Program;
 use Illuminate\Http\Request;
+use RealRashid\SweetAlert\Facades\Alert;
+
 
 class ProgramsController extends Controller
 {
@@ -38,8 +40,9 @@ class ProgramsController extends Controller
             'title'=>$request['title'],
             'description'=>$request['description'],
         ]);
-        // dd($program);
-        // return 'f';
+                Alert::success('تهانينا', 'تم اضافة برنامج ');
+
+
         return redirect(route("program",['program'=>$program]));
     }
 
@@ -74,8 +77,9 @@ class ProgramsController extends Controller
         $updateProgram->save();
         // dd($updateProgram);
         $program = Program::all();
+                Alert::success('تم تعديل البرنامج ');
+
         return view('admin.program',['program'=>$program]);
-        // return redirect(route('program',['updateProgram'=>$updateProgram]));
     }
     /**
      * Remove the specified resource from storage.

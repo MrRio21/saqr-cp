@@ -40,7 +40,7 @@ class GalleryController extends Controller
     {
         $request->validate([
 
-            'image'=>'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+            // 'image'=>'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
         ]);
         $img=md5(microtime()).$request->image->getClientOriginalName();
         $request->image->storeAs("public/imgs",$img);
@@ -68,7 +68,7 @@ class GalleryController extends Controller
         $video = Video::all();
         Alert::success('تم اضافة فيديو ');
 
-        return view('admin.video',['image'=>$video]);
+        return view('admin.video',['video'=>$video]);
     }
 
 public function destroyImage($id){

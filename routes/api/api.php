@@ -41,4 +41,15 @@ Route::get('/about',[AboutUsController :: class ,"index"]);
 Route::post('/storeBookTrip',[BookTripController :: class ,"storeBookTrip"]);
 Route::post('/contact',[BookTripController :: class ,"contact"]);
 
+
 Route::post('/storeProgram',[ProgramsController :: class ,"store"])->name('storeProgram');
+
+
+    //////// teamWork
+    Route::get('/teamWork',[TeamWorkController :: class ,"index"])->name('teamWork');
+
+    /////// programs
+    Route::get('/program',[ProgramsController :: class ,"index"])->name('program');
+
+    ////////// admissionRequirements
+    Route::get('/admissionRequirements',[AdmissionRequirementsController :: class ,"index"])->name('admissionRequirements');

@@ -6,7 +6,7 @@
  <div class="projects p-20 bg-white rad-10 m-20">
           <div class="d-flex justify-content-between">
           <h2 class="mt-0 mb-20">اضافة شرط قبول</h2>
-            <a href="{{route('storeRequirements')}}"  style="height: 40px" class="btn btn-primary ">+</a>
+            <a href="{{route('storeRequirements')}}"  style="height: 40px" class="btn btn-primary ">اضافة شرط قبول +</a>
         </div>
           <div class="responsive-table">
             <table class="fs-15 w-full ">
@@ -25,7 +25,7 @@
                     {{-- @dd($user) --}}
                     <td>{{$item['id']}}</td>
                     <td>{{$item['requirement']}}</td>
-                        <td><button class="label btn-shape bg-green c-white">Edit</button>
+                        <td><a href="{{route('editRequirements',$item->id)}}" class="label btn-shape bg-green c-white">Edit</a>
                     </td>
                     <form method="POST" action="{{route('deleteRequirement',['id'=>$item->id])}}" accept-charset="UTF-8">
                         @csrf @method('delete')
