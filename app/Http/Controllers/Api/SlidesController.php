@@ -1,34 +1,23 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Api;
 
+use App\Http\Controllers\Controller;
 use App\Models\Slide;
 use App\Models\SlideItem;
-use RealRashid\SweetAlert\Facades\Alert;
 use Illuminate\Http\Request;
 
 class SlidesController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     */
+    //
+
     public function index()
     {
         $slide=Slide::all();
-        return view('admin.slide',['slide'=>$slide]);
+        return response()->json(['data'=>$slide,'status'=>200]);
     }
 
-    /**
-     * Show the form for creating a new resource.
-     */
-    public function create()
-    {
-        return view('admin.storeSlide');
-    }
 
-    /**
-     * Store a newly created resource in storage.
-     */
 
    public function store(Request $request)
 {
@@ -55,35 +44,45 @@ class SlidesController extends Controller
         ]);
     }
     $slide = Slide ::all();
-
-    Alert::success('تهانينا', 'تم اضافة  شرائح ^^');
     
 
-    return view('admin.slide',['slide'=>$slide]);
+        return response()->json(['data'=>$slide,'status'=>200]);
 }
 
     /**
      * Display the specified resource.
      */
-    public function show(Slide $slides)
-    {
+    //  public function show($slideID)
+    // {
+    //     $slide = Slide::find($slideID);
 
-    }
+    //    $slideItem= SlideItem::where('slide_id',$slideID);
+    //     return  response()->json([
+    //         'slide'=>$slide ,
+    //         'slide item' => $slideItem
+    //     ]);
+    // }
 
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(Slide $slides)
+ public function show( $id)
     {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     */
-    public function update(Request $request, Slide $slides)
-    {
-        //
+        $slide = Slide::find($id);
+        
+        if (!$slide) {
+            return response()->json(['message' => 'Slide not found'], 404);
+        }
+        
+        $slideItems = SlideItem::where('slide_id', $slide->id)->get();
+        $response = [
+            'slide' => [
+                'id' => $slide->id,
+                'heading' => $slide->heading,
+                'title' => $slide->title,
+                'description' => $slide->description,
+            ],
+            'slideItems' => $slideItems->toArray(),
+        ];
+        
+        return response()->json(['data'=>$response]);
     }
 
     /**
@@ -97,3 +96,4 @@ class SlidesController extends Controller
         return back();
     }
 }
+

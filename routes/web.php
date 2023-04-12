@@ -3,7 +3,9 @@
 use App\Http\Controllers\AboutUsController;
 use App\Http\Controllers\admin\AdminController;
 use App\Http\Controllers\AdmissionRequirementsController;
+use App\Http\Controllers\Api\BookTripController;
 use App\Http\Controllers\Api\Registeration\UserController;
+use App\Http\Controllers\CommonQuestionsController;
 use App\Http\Controllers\GalleryController;
 use App\Http\Controllers\ProgramsController;
 use App\Http\Controllers\SlidesController;
@@ -38,7 +40,10 @@ Route::post('/store_login',[AdminController::class,'store_login'])->name('store_
 /////// all users
 // Route::get('/admin',[AdminController::class,'admin'])->name('admin')->middleware('auth:sanctum');
 Route::middleware(['auth'])->group(function () {
-    Route::get('/admin',[AdminController::class,'admin'])->name('admin');
+    Route::get('/admin',[AdminController::class,'index'])->name('admin');
+    Route::get('/admins',[AdminController::class,'admin'])->name('admins');
+    Route::get('/storeAdmin',[AdminController::class,'create'])->name('storeAdmin');
+    Route::post('/storeAdmin',[AdminController::class,'storeAdmin'])->name('storeAdmin');
 
     Route::get('/allUsers',[UserController :: class ,"index"])->name('allUsers');
     Route::delete('/deleteUser/{id}',[AdminController :: class ,"destroy"])->name('deleteUser');
@@ -67,6 +72,15 @@ Route::middleware(['auth'])->group(function () {
     Route::put('/updateProgram/{id}', [ProgramsController::class ,'updated'])->name('updateProgram');
     Route::delete('/deleteProgram/{id}',[ProgramsController :: class ,"destroy"])->name('deleteProgram');
 
+    ////////// CommonQuestions
+
+    Route::get('/commonQuestions',[CommonQuestionsController :: class ,"index"])->name('commonQuestions');
+    Route::get('/storeQuestions',[CommonQuestionsController :: class ,"create"])->name('storeQuestions');
+    Route::post('/storeQuestions',[CommonQuestionsController :: class ,"store"])->name('storeQuestions');
+    Route::get('/editQuestions/{id}/edit', [CommonQuestionsController::class, 'edit'])->name('editQuestions');
+    Route::put('/updateQuestions/{id}', [CommonQuestionsController::class ,'updated'])->name('updateQuestions');
+    Route::delete('/deleteQuestions/{id}',[CommonQuestionsController :: class ,"destroy"])->name('deleteQuestions');
+  
     ////////// admissionRequirements
 
     Route::get('/admissionRequirements',[AdmissionRequirementsController :: class ,"index"])->name('admissionRequirements');
@@ -93,8 +107,10 @@ Route::middleware(['auth'])->group(function () {
     // Route::get('/storeSlide',[SlidesController :: class ,"create"])->name('storeSlide');
     Route::post('/storeSlide',[SlidesController :: class ,"store"])->name('storeSlide');
     Route::delete('/deleteSlide/{id}',[SlidesController :: class ,"destroy"])->name('deleteSlide');
-
-
+    
+    ////////// book trip
+    Route::get('/bookTrip',[BookTripController :: class ,"index"])->name('bookTrip');
+    Route::delete('/deleteReservation/{id}',[BookTripController :: class ,"destroy"])->name('deleteReservation');
 
 
 });

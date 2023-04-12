@@ -34,6 +34,7 @@ class UserController extends Controller
             'phone' => $request['phone'],
 
         ]);
+        
 
     $createToken = $users->createToken($request->email)->plainTextToken;
 

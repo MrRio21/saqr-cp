@@ -14,7 +14,8 @@ class BookTripController extends Controller
      */
     public function index()
     {
-
+        $bookTrip = BookTrip ::all();
+        return view('admin.bookTrip',['bookTrip'=>$bookTrip]);
     }
 
 
@@ -79,8 +80,8 @@ class BookTripController extends Controller
         //
     }
 
-    public function destroy(BookTrip $bookTrip)
-    {
-        //
+       public function destroy($id){
+        BookTrip::find($id)->delete();
+        return back();
     }
 }

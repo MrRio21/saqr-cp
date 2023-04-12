@@ -19,6 +19,7 @@
 		<ul class="side-menu">
 			<li ><a href="{{('admin')}}" class="active"><i class='bx bxs-dashboard icon' ></i> الرئيسية</a></li>
 			{{-- <li class="divider" data-text="main">Main</li> --}}
+            <li><a href="{{route('admins')}}"><i class='bx bxs-notepad icon' ></i>المسئولين</a></li>
 			<li>
 				<a href="#"><i class='bx bxs-inbox icon' ></i>المعرض <i class='bx bx-chevron-right icon-right' ></i></a>
 				<ul class="side-dropdown">
@@ -30,8 +31,10 @@
 			<li><a href="{{route('teamWork')}}"><i class='bx bx-table icon' ></i>فريق العمل</a></li>
 			<li><a href="{{route('program')}}"><i class='bx bxs-chart icon' ></i> البرامج</a></li>
 			<li><a href="{{route('admissionRequirements')}}"><i class='bx bxs-chart icon' ></i> شروط القبول</a></li>
+			<li><a href="{{route('bookTrip')}}"><i class='bx bxs-chart icon' ></i>حجز الرحلات</a></li>
 			<li><a href="{{route('slides')}}"><i class='bx bxs-widget icon' ></i> الشرائح</a></li>
-			<li><a href="{{route('socialMedia')}}"><i class='bx bxs-widget icon' ></i> التواصل الاج</a></li>
+			<li><a href="{{route('socialMedia')}}"><i class='bx bxs-widget icon' ></i> التواصل الاجتماعي</a></li>
+			<li><a href="{{route('commonQuestions')}}"><i class='bx bxs-widget icon' ></i>الاسئلة الشائعة</a></li>
 
 		</ul>
 

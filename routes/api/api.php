@@ -1,11 +1,16 @@
 <?php
 
-use App\Http\Controllers\AboutUsController;
+use App\Http\Controllers\Api\AboutController;
 use App\Http\Controllers\admin\AdminController;
-use App\Http\Controllers\Api\Registeration\UserController;
+use App\Http\Controllers\Api\AdmissionRequirementsController;
 use App\Http\Controllers\Api\BookTripController;
-use App\Http\Controllers\ProgramsController;
-use App\Http\Controllers\TeamWorkController;
+use App\Http\Controllers\Api\GalleryController;
+use App\Http\Controllers\Api\ProgramController;
+use App\Http\Controllers\Api\Registeration\UserController;
+use App\Http\Controllers\Api\SlidesController;
+use App\Http\Controllers\Api\SocialMediaController;
+use App\Http\Controllers\Api\TeamWorkController;
+use App\Http\Controllers\Api\CommonQuestionsController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -23,36 +28,38 @@ use Illuminate\Support\Facades\Route;
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
-Route::get('/admin',[AdminController::class,'admin']);
 
 /////////  Apis sign up
 Route::get('/allUsers',[UserController :: class ,"index"]);
 Route::get('/show{id}',[UserController :: class ,"show"]);
 Route::post('/signup',[UserController :: class ,"store"]);
 Route::post('/login',[UserController :: class ,"login"]);
-Route::post('/team',[TeamWorkController :: class ,"store"]);
-Route::get('/team',[TeamWorkController :: class ,"index"]);
 
 
-Route::post('/about',[AboutUsController :: class ,"store"]);
-Route::get('/about',[AboutUsController :: class ,"index"]);
+/////////// SocialMedia
+    Route::get('/socialMedia',[SocialMediaController :: class ,"index"])->name('socialMedia');
+
+
+//////// about
+Route::get('/about',[AboutController :: class ,"about"]);
 
 /////////////  store Trip & Contact Us
 Route::post('/storeBookTrip',[BookTripController :: class ,"storeBookTrip"]);
 Route::post('/contact',[BookTripController :: class ,"contact"]);
 
 
-Route::post('/storeProgram',[ProgramsController :: class ,"store"])->name('storeProgram');
+    ////////// CommonQuestions
+    Route::get('/commonQuestions',[CommonQuestionsController :: class ,"index"]);
 
+//////// teamWork
+Route::get('/teamWork',[TeamWorkController :: class ,"index"])->name('teamWork');
 
-    //////// teamWork
-    Route::get('/teamWork',[TeamWorkController :: class ,"index"])->name('teamWork');
+/////// programs
+Route::get('/program',[ProgramController :: class ,"index"]);
+Route::get('/program/show/{id}',[ProgramController :: class ,"show"]);
 
-    /////// programs
-    Route::get('/program',[ProgramsController :: class ,"index"])->name('program');
-
-    ////////// admissionRequirements
-    Route::get('/admissionRequirements',[AdmissionRequirementsController :: class ,"index"])->name('admissionRequirements');
+////////// admissionRequirements
+Route::get('/admissionRequirements',[AdmissionRequirementsController :: class ,"index"])->name('admissionRequirements');
 
 
     ////////// gallery
@@ -60,4 +67,5 @@ Route::post('/storeProgram',[ProgramsController :: class ,"store"])->name('store
     Route::get('/videos',[GalleryController :: class ,"indexVideos"])->name('videos');
 
         ///////// Slides
-    Route::get('/slides',[SlidesController :: class ,"index"])->name('slides');
+    Route::get('/slides',[SlidesController:: class ,"index"]);
+    Route::get('/slides/show/{id}',[SlidesController:: class ,"show"]);

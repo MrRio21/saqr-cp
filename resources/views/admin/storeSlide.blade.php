@@ -9,11 +9,11 @@
     @csrf
 
     <div class="form-group">
-        <input type="text" class="w-full p-10 b-none rad-6" id="input" placeholder="اسم الشريحة"  name="title" class="form-control" required>
+        <input type="text" class="w-full p-10 b-none rad-6" id="input" placeholder=" الشريحة"  name="title" class="form-control" required>
     </div>
 
     <div class="form-group">
-        <input type="text" class="w-full p-10 b-none rad-6" id="input"  name="heading" class="form-control" placeholder="لشريحة" required>
+        <input type="text" class="w-full p-10 b-none rad-6" id="input"  name="heading" class="form-control" placeholder="اسم الشريحة" required>
     </div>
 
         <textarea name="description"  class=" form-control p-20 h-20 b-none rad-6" id="about-slide" placeholder="المضمون"  required></textarea>
