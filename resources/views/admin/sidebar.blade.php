@@ -50,11 +50,15 @@
 			</form>
 
 			<span class="divider"></span>
-					<li><a href="{{route('logout')}}"><i class='bx bxs-log-out-circle' ></i> تسجيل خروج </a></li>
+					<li>
+                        <a href="{{route('logout')}}">
+                            <i class='bx bxs-log-out-circle' ></i> تسجيل خروج
+                        </a>
+                    </li>
 
 		</nav>
 
-
+    </section>
     <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
 	<script src="{{asset('assets/js/script.js')}}"></script>
 
