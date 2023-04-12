@@ -15,9 +15,8 @@
                 <tr>
                     <td>الشريحة</td>
                     <td> اسم الشريحة</td>
-                    <td>  المضمون</td>
-                    <td>تعديل</td>
-                    <td>حذف</td>
+                    <td>المضمون</td>
+                    <td></td>
                 </tr>
             </thead>
             <tbody>
@@ -27,16 +26,17 @@
                     <td>{{$item['title']}}</td>
                     <td>{{$item['heading']}}</td>
                     <td>{{$item['description']}}</td>
-                        <td><button class="label btn-shape bg-green c-white">Edit</button>
-                    </td>
-                    <form method="POST" action="{{route('deleteSlide',['id'=>$item->id])}}" accept-charset="UTF-8">
-                        @csrf @method('delete')
-                        </td>
-                            <td><button class="label btn-shape bg-red c-white "
-                                onclick="return confirm('هل انت متاكد انك تريد الحذف ؟')"‏
-                                >Delete</button>
-                        </td>
-                    </form>
+                    <td style='display:flex;justify-content: center;align-items: center;gap:1rem'>
+                        <button class="label btn-shape bg-green c-white" style='border-radius: 9999px;width:2rem;height: 2rem;display:flex;justify-content:center;align-items:center' title='تعديل'><i class='bx bx-edit' style='font-size:1.1rem'></i></button>
+                        <form method="POST" action="{{route('deleteSlide',['id'=>$item->id])}}" accept-charset="UTF-8">
+                            @csrf @method('delete')
+                        <button class="label btn-shape bg-red c-white "
+                        style='border-radius: 9999px;width:2rem;height: 2rem;display:flex;justify-content:center;align-items:center'
+                        title='حذف'
+                        onclick="return confirm('هل انت متاكد انك تريد الحذف ؟')"‏
+                        ><i class='bx bxs-trash' style='font-size:1.1rem'></i></button>
+                </form>
+            </td>
                 </tr>
                 @endforeach
               </tbody>

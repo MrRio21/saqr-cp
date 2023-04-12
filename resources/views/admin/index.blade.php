@@ -35,11 +35,11 @@
                 <table class="fs-15 w-full table table-striped">
                   <thead>
                     <tr>
-                        <th scope="col">الاسم</th>
-                        <th scope="col">الايميل</th>
-                        <th scope="col">رقم الجوال</th>
+                        <td>الاسم</td>
+                        <td>الايميل</td>
+                        <td>رقم الجوال</td>
                         {{-- <td>تعديل</td> --}}
-                        <th scope="col"></th>
+                        <td></td>
                     </tr>
                 </thead>
                 <tbody>
@@ -56,7 +56,8 @@
                             @csrf @method('delete')
                             </td>
                                 <td><button title='حذف' onclick="return confirm('هل انت متاكد انك تريد الحذف')"‏
-                                    class="label btn-shape bg-red c-white"><i class='bx bx-trash'></i></button>
+                            style='border-radius: 9999px;width:2.5rem;height: 2.5rem;display:flex;justify-content:center;align-items:center'
+                                    class="label btn-shape bg-red c-white" ><i class='bx bx-trash' style='font-size:1.3rem'></i></button>
                             </td>
                         </form>
                     </tr>

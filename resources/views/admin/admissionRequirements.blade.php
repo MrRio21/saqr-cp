@@ -14,8 +14,7 @@
                 <tr>
                     <td>الرقم</td>
                     <td>شروط القبول</td>
-                    <td>تعديل</td>
-                    <td>حذف</td>
+                    <td></td>
                 </tr>
             </thead>
             <tbody>
@@ -25,16 +24,18 @@
                     {{-- @dd($user) --}}
                     <td>{{$item['id']}}</td>
                     <td>{{$item['requirement']}}</td>
-                        <td><a href="{{route('editRequirements',$item->id)}}" class="label btn-shape bg-green c-white">Edit</a>
-                    </td>
+
+                <td  style='display:flex;align-items:center;gap:1rem'>
+                    <a href="{{route('editRequirements',$item->id)}}" class="label btn-shape bg-green c-white"style='border-radius: 9999px;width:2rem;height: 2rem;display:flex;justify-content:center;align-items:center' title='تعديل'><i class='bx bx-edit' style='font-size:1.1rem'></i></a>
                     <form method="POST" action="{{route('deleteRequirement',['id'=>$item->id])}}" accept-charset="UTF-8">
                         @csrf @method('delete')
-                        </td>
-                            <td><button class="label btn-shape bg-red c-white "
+                            <button class="label btn-shape bg-red c-white "
+                            style='border-radius: 9999px;width:2rem;height: 2rem;display:flex;justify-content:center;align-items:center'
+                        title='حذف'
                                 onclick="return confirm('Are you sure you want to delete this category?')"‏
-                                >Delete</button>
+                                ><i class='bx bxs-trash' style='font-size:1.1rem'></i></button>
+                            </form>
                         </td>
-                    </form>
                 </tr>
                 @endforeach
               </tbody>

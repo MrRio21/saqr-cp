@@ -23,10 +23,10 @@
         <button type="button" class="save d-block fs-14 bg-blue c-white b-none w-fit btn-shape mb-2 " onclick="showInput()">Add Item</button>
         <div id="inputs" class="d-flex flex-wrap">
             {{-- <label for="items">Items</label><br> --}}
-        <input type="text" name="items[]" class=" p-10 b-none rad-6 mb-15" id="input" placeholder="item" required>
+        <input type="text" name="items[]" class=" p-10 b-none rad-6" style='width: fit-content' id="input" placeholder="item" required>
     </div>
 </div>
-<input class="save d-block fs-14 bg-blue c-white b-none w-fit btn-shape" type="submit" value="حفظ" />
+<input class="save btn btn-primary w-fit" type="submit" value="حفظ" />
 </form>
 
   </section>

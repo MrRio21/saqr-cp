@@ -14,7 +14,7 @@
         <input class="w-full p-10 b-none rad-6" type="text" placeholder="تويتر" name="twitter" value="{{$socialMedia->twitter ?? ''}}"/>
         <input class="w-full p-10 b-none rad-6" type="text" placeholder="سناب" name="snap" value="{{$socialMedia->snap ?? ''}}"/>
         {{-- <textarea id="about" name="about"  class=" p-20 h-20 b-none rad-6" placeholder="عن الاكاديمية">{{ $about->about ?? '' }}</textarea> --}}
-        <input class="save btn btn-primary" type="submit" value="حفظ" />
+        <input class="save btn btn-primary w-fit" type="submit" value="حفظ" />
     </form>
 
 
