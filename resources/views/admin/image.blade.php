@@ -3,19 +3,22 @@
 @include('sweetalert::alert')
 
 
+<style>
+    #ima{
+/* "width: 287px"  */
+    }
+</style>
+
+
 <section class="m-20 pt-20 ">
         <div class="d-flex justify-content-between">
             <h2 class="p-10 "> الصور</h2>
+            @error('image')
+            {{$message}}
+            @enderror
             {{-- <button href="{{route('storeImage')}}"   class="btn btn-primary ">+</button> --}}
             <button type="button" class="btn btn-primary" data-toggle="modal" style="height: 40px" data-target="#exampleModal">اضافة صورة +</button>
         </div>
-
-        <style>
-            #imgg{
-                width:270px
-
-            }
-        </style>
 
 
 <!-- Button trigger modal -->
@@ -37,6 +40,7 @@
             {{$message}}
             @enderror
           </div>
+        
           <div class="modal-footer">
               <button type="submit" name="submit" class="btn btn-primary" >حفظ</button>
               <button type="button" class="btn btn-secondary" data-dismiss="modal">اغلاق</button>
@@ -58,7 +62,7 @@
     @foreach ($image as $item)
             {{-- @dd($teamWork) --}}
             <div class="card col px-0" style="width: 18rem;">
-              <img src="{{url('http://localhost:8000/storage/imgs/'.$item->image)}}"  class="card-img-top"style="width: 287px" alt="...">
+              <img src="{{url('http://localhost:8000/storage/imgs/'.$item->image)}}"  class="card-img-top" id="ima">
                 <div class="card-body">
                <form method="POST" action="{{route('deleteImage',['id'=>$item->id])}}" accept-charset="UTF-8">
                         @csrf @method('delete')
@@ -73,6 +77,7 @@
             @endforeach
         </div>
     </div>
+    
 
 </section>
 

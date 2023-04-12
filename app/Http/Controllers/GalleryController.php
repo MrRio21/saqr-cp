@@ -40,35 +40,42 @@ class GalleryController extends Controller
     {
         $request->validate([
 
-            // 'image'=>'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+            'image'=>'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
         ]);
         $img=md5(microtime()).$request->image->getClientOriginalName();
         $request->image->storeAs("public/imgs",$img);
         Image::create([
             'image'=>$img
         ]);
-        $image = Image::all();
         Alert::success('تم اضافة صورة ');
-
-        return view('admin.image',['image'=>$image]);
+        return back();
 
     }
 
     public function storeVideo(Request $request)
     {
         $request->validate([
+        'video' => 'required|mimetypes:video/mp4,video/quicktime|max:100000',
+    ]);
 
-        'video'=>'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
-        ]);
-        $vid=md5(microtime()).$request->video->getClientOriginalName();
-        $request->image->storeAs("public/imgs",$vid);
-        Image::create([
-            'video'=>$vid
-        ]);
-        $video = Video::all();
+    $video = new Video;
+
+    // Store the video file in the database
+    if ($request->hasFile('video') && $request->file('video')->isValid()) {
+    // dd($video);
+
+        $videoFile = $request->file('video');
+        $videoFileName = time() . '.' . $videoFile->getClientOriginalExtension();
+        $videoFile->storeAs('public/videos', $videoFileName);
+        $video->file_name = $videoFileName;
+        $video->file_path = '/storage/videos/' . $videoFileName;
+    }
+
+    // dd($video);
+    $video->save();
+        // $video = Video::all();
         Alert::success('تم اضافة فيديو ');
-
-        return view('admin.video',['video'=>$video]);
+        return back();
     }
 
 public function destroyImage($id){
