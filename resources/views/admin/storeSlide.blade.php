@@ -2,7 +2,7 @@
 @section('sidebar')
 
 
-  <section class="mb-20 p-20">
+  <section class="section mb-20 p-20">
         <h2 class="p-20">اضافة  شريحة</h2>
 
 <form class="home_form" method="POST"  action="{{ route('storeSlide') }}">

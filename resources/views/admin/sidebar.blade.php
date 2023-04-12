@@ -23,13 +23,13 @@
 			<li>
 				<a href="#"><i class='bx bxs-inbox icon' ></i>المعرض <i class='bx bx-chevron-right icon-right' ></i></a>
 				<ul class="side-dropdown">
-					<li><a href="{{route('images')}}">الصور</a></li>
-					<li><a href="{{route('videos')}}">الفيديوهات</a></li>
+					<li style='padding-right: 1rem;'><a href="{{route('images')}}">الصور</a></li>
+					<li style='padding-right: 1rem;'><a href="{{route('videos')}}">الفيديوهات</a></li>
 				</ul>
 			</li>
 			<li><a href="{{route('about')}}"><i class='bx bxs-notepad icon' ></i> عن الاكاديمية</a></li>
-			<li><a href="{{route('teamWork')}}"><i class='bx bx-table icon' ></i>فريق العمل</a></li>
-			<li><a href="{{route('program')}}"><i class='bx bxs-chart icon' ></i> البرامج</a></li>
+			<li><a href="{{route('teamWork')}}"><i class='bx bxs-group icon'></i>فريق العمل</a></li>
+			<li><a href="{{route('program')}}"><i class='bx bxs-select-multiple icon'></i> البرامج</a></li>
 			<li><a href="{{route('admissionRequirements')}}"><i class='bx bxs-chart icon' ></i> شروط القبول</a></li>
 			<li><a href="{{route('bookTrip')}}"><i class='bx bxs-chart icon' ></i>حجز الرحلات</a></li>
 			<li><a href="{{route('slides')}}"><i class='bx bxs-widget icon' ></i> الشرائح</a></li>
@@ -53,11 +53,15 @@
 			</form>
 
 			<span class="divider"></span>
-					<li><a href="{{route('logout')}}"><i class='bx bxs-log-out-circle' ></i> تسجيل خروج </a></li>
+					<li>
+                        <a href="{{route('logout')}}">
+                            تسجيل خروج
+                        </a>
+                    </li>
 
 		</nav>
 
-
+    </section>
     <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
 	<script src="{{asset('assets/js/script.js')}}"></script>
 

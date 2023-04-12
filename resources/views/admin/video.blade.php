@@ -3,7 +3,7 @@
 @include('sweetalert::alert')
 
 
-<section class="m-20 pt-20 ">
+<section class="section p-20 ">
         <div class="d-flex justify-content-between">
             <h2 class="p-10 "> الفيديوهات</h2>
             @error('video')
@@ -33,7 +33,7 @@
             {{$message}}
             @enderror
           </div>
-        
+
           <div class="modal-footer">
               <button type="submit" name="submit" class="btn btn-primary" >حفظ</button>
               <button type="button" class="btn btn-secondary" data-dismiss="modal">اغلاق</button>

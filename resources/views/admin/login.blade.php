@@ -8,28 +8,28 @@
   </head>
   <body>
     <div class="center">
-      <h1>Login</h1>
+      <h1>تسجيل دخول</h1>
       <form method="post" action="{{route('store_login')}}">
         @csrf
         <div class="txt_field">
-          <input type="email" name="email">
+          <input type="email" name="email" dir='rtl'>
 
           <span></span>
-          <label>Username</label>
+          <label>البريد الالكتروني</label>
         </div>
         @error('email')
         {{ $message }}
         @enderror
         <div class="txt_field">
-            <input type="password" name="password">
+            <input type="password" name="password" dir='rtl'>
             <span></span>
-            <label>Password</label>
+            <label>كلمة المرور</label>
         </div>
         @error('password')
         {{ $message }}
         @enderror
         {{-- <div class="pass">Forgot Password?</div> --}}
-        <input type="submit" name="submit" value="Login">
+        <input type="submit" name="submit" value="تسجيل">
         {{-- <div class="signup_link">
           Not a member? <a href="#">Signup</a>
         </div> --}}
