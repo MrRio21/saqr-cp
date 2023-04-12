@@ -53,3 +53,11 @@ Route::post('/storeProgram',[ProgramsController :: class ,"store"])->name('store
 
     ////////// admissionRequirements
     Route::get('/admissionRequirements',[AdmissionRequirementsController :: class ,"index"])->name('admissionRequirements');
+
+
+    ////////// gallery
+    Route::get('/images',[GalleryController :: class ,"indexImages"])->name('images');
+    Route::get('/videos',[GalleryController :: class ,"indexVideos"])->name('videos');
+
+        ///////// Slides
+    Route::get('/slides',[SlidesController :: class ,"index"])->name('slides');

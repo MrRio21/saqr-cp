@@ -4,7 +4,11 @@
 
 
 
-
+<style>
+    body{
+        /* direction: rtl; */
+    }
+</style>
 		<!-- NAVBAR -->
 
 		<!-- MAIN -->
@@ -32,7 +36,7 @@
                     <td>الاسم</td>
                     <td>الايميل</td>
                     <td>رقم الجوال</td>
-                    <td>تعديل</td>
+                    {{-- <td>تعديل</td> --}}
                     <td>حذف</td>
                 </tr>
             </thead>
@@ -44,7 +48,7 @@
                     <td>{{$user['f_name']}}</td>
                     <td>{{$user['email']}}</td>
                     <td>{{$user['phone']}}</td>
-                        <td><button class="label btn-shape bg-green c-white">تعديل</button>
+                        {{-- <td><button class="label btn-shape bg-green c-white">تعديل</button> --}}
                     </td>
                     <form method="POST" action="{{route('deleteUser',['id'=>$user->id])}}" accept-charset="UTF-8">
                         @csrf @method('delete')

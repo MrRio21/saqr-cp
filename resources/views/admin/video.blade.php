@@ -6,8 +6,45 @@
 <section class="m-20 pt-20 ">
         <div class="d-flex justify-content-between">
             <h2 class="p-10 "> الفيديوهات</h2>
-            <button href="{{route('storeVideo')}}"  style="height: 40px" class="btn btn-primary ">+</button>
+            @error('video')
+            {{$message}}
+            @enderror
+            {{-- <button href="{{route('storeImage')}}"   class="btn btn-primary ">+</button> --}}
+            <button type="button" class="btn btn-primary" data-toggle="modal" style="height: 40px" data-target="#exampleModal">اضافة فيديو +</button>
         </div>
+
+
+<!-- Button trigger modal -->
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">اضافة فيديو </h5>
+        </button>
+      </div>
+      <div class="modal-body">
+        <form method="POST" action="{{route('storeVideo')}}" enctype="multipart/form-data">
+            @csrf
+          <div class="form-group">
+            <input type="file" name="video" class="form-control">
+            @error('video')
+            {{$message}}
+            @enderror
+          </div>
+        
+          <div class="modal-footer">
+              <button type="submit" name="submit" class="btn btn-primary" >حفظ</button>
+              <button type="button" class="btn btn-secondary" data-dismiss="modal">اغلاق</button>
+      </div>
+        </form>
+      </div>
+
+    </div>
+  </div>
+</div>
+
 
     <div class=" container pt-20">
         <div class="row row-cols-3 gap-4">
@@ -15,8 +52,10 @@
     @foreach ($video as $item)
             {{-- @dd($teamWork) --}}
             <div class="card col" style="width: 18rem;">
-              <img src="{{url('http://localhost:8000/storage/imgs/'.$item->video)}}"  class="card-img-top" alt="...">
-                <div class="card-body">
+                <video width="640" height="360" controls>
+                    <source src="{{url('http://localhost:8000/storage/videos/'.$item->video)}}" type="video/mp4">
+                    Your browser does not support the video tag.
+                </video>                <div class="card-body">
                <form method="POST" action="{{route('deleteImage',['id'=>$item->id])}}" accept-charset="UTF-8">
                         @csrf @method('delete')
                         </td>
@@ -32,6 +71,11 @@
     </div>
 
 </section>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/2.9.3/umd/popper.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.6.0/js/bootstrap.min.js"></script>
+
 
 
 @endsection
