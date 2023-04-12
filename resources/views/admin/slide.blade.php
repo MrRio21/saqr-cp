@@ -3,7 +3,7 @@
 @include('sweetalert::alert')
 
 
-
+<section class="section">
  <div class="projects p-20 bg-white rad-10 m-20">
           <div class="d-flex justify-content-between">
           <h2 class="mt-0 mb-20">الشرائح </h2>
@@ -45,6 +45,7 @@
         </div>
 
 
+</section>
 
-@endsection
+        @endsection
 

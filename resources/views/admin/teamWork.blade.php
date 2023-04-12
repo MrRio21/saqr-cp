@@ -5,7 +5,7 @@
 
 
 
-<section class="m-20 pt-20 ">
+<section class="section p-20 ">
         <div class="d-flex justify-content-between">
             <h2 class="p-10 ">فريق العمل</h2>
             <a href="{{route('addTeamWork')}}"  style="height: 40px" class="btn btn-primary ">اضافة عضو +</a>
@@ -25,9 +25,9 @@
                <form method="POST" action="{{route('deleteTeamWork',['id'=>$item->id])}}" accept-charset="UTF-8">
                         @csrf @method('delete')
                         </td>
-                            <td><button class="btn btn-danger"
+                            <td><button class="btn btn-danger" style='border-radius: 99999px'
                                 onclick="return confirm('هل انت متاكد انك تريد الحذف?')"‏
-                                >حذف</button>
+                                ><i class='bx bx-trash'></i></button>
                         </td>
                     </form>
                 </div>

@@ -10,7 +10,7 @@
 </style>
 
 
-<section class="m-20 pt-20 ">
+<section class="section p-20 ">
         <div class="d-flex justify-content-between">
             <h2 class="p-10 "> الصور</h2>
             @error('image')
@@ -40,7 +40,7 @@
             {{$message}}
             @enderror
           </div>
-        
+
           <div class="modal-footer">
               <button type="submit" name="submit" class="btn btn-primary" >حفظ</button>
               <button type="button" class="btn btn-secondary" data-dismiss="modal">اغلاق</button>
@@ -56,33 +56,47 @@
 
 
 
-    <div class=" container pt-20">
+    <div class="container pt-20">
         <div class="row row-cols-3 gap-4">
 
     @foreach ($image as $item)
             {{-- @dd($teamWork) --}}
-            <div class="card col px-0" style="width: 18rem;">
-              <img src="{{url('http://localhost:8000/storage/imgs/'.$item->image)}}"  class="card-img-top" id="ima">
-                <div class="card-body">
-               <form method="POST" action="{{route('deleteImage',['id'=>$item->id])}}" accept-charset="UTF-8">
-                        @csrf @method('delete')
-                        </td>
-                            <td><button class="label btn-shape bg-red c-white"
-                                onclick="return confirm('Are you sure you want to delete this ?')"‏
-                                >حذف</button>
-                        </td>
-                    </form>
-                </div>
-            </div>
+    <div class="card text-white p-0" style='height: 250px'>
+<img class="card-img" src="{{url('http://localhost:8000/storage/imgs/'.$item->image)}}" id="ima" style='overflow: hidden; object-fit: cover;height: 100%' alt="Card image" >
+<div class="card-img-overlay" style='overflow: hidden;' data-toggle="modal" data-target="#exampleModal2">
+<form method="POST" action="{{route('deleteImage',['id'=>$item->id])}}" accept-charset="UTF-8">
+@csrf @method('delete')
+<button class="border-none btn-shape bg-red c-white delete-btn">
+    <i class='bx bx-trash'></i>
+                </button>
+            </form>
+</div>
+</div>
             @endforeach
         </div>
     </div>
-    
+
 
 </section>
+
+<div class="modal fade" id="exampleModal2" tabindex="-1" aria-labelledby="exampleModalLabel2" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel2">عرض الصورة </h5>
+        </button>
+      </div>
+      <div class="modal-body">
+        <img src="{{url('http://localhost:8000/storage/imgs/'.$item->image)}}" alt="show" style='width: 100%'>
+      </div>
+
+    </div>
+  </div>
+</div>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/2.9.3/umd/popper.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.6.0/js/bootstrap.min.js"></script>
+
 
 @endsection

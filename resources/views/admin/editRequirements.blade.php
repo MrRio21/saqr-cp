@@ -3,7 +3,7 @@
 
 
 
-<section class="mb-20 p-20">
+<section class="section mb-20 p-20">
     <h2 class="p-20">تعديل شرط القبول</h2>
     <form class="home_form" action="{{ route('updateRequirements', ['id'=>$editRequirements->id]) }}"  enctype="multipart/form-data"   method="POST">
         @csrf

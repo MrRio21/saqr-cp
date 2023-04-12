@@ -84,10 +84,12 @@ li {
     display: flex;
     justify-content: center;
     align-items: center;
-    margin-right: 6px;
+    font-size: 1.4rem;
 }
 #sidebar .icon-right {
-    margin-left: auto;
+    margin-right: auto;
+    padding: 0 .5rem;
+    transform: rotateZ(90deg);
     transition: all 0.3s ease;
 }
 #sidebar .side-menu {
@@ -104,6 +106,7 @@ li {
 #sidebar .side-menu a {
     display: flex;
     align-items: center;
+    gap: 1rem;
     font-size: 14px;
     color: var(--dark);
     padding: 12px 0px 12px 0px;
@@ -116,7 +119,7 @@ li {
     background: var(--grey);
 }
 #sidebar .side-menu > li > a.active .icon-right {
-    transform: rotateZ(90deg);
+    transform: rotateZ(270deg);
 }
 #sidebar .side-menu > li > a.active,
 #sidebar .side-menu > li > a.active:hover {
@@ -193,13 +196,14 @@ li {
 /* SIDEBAR */
 
 /* CONTENT */
-#content {
+#content, .home, .section {
     position: relative;
     width: calc(100% - 260px);
     right: 260px;
     transition: all 0.3s ease;
 }
-#sidebar.hide + #content {
+#sidebar.hide + #content,
+#sidebar.hide ~ .home, #sidebar.hide ~ .section{
     width: calc(100% - 60px);
     right: 60px;
 }
@@ -432,4 +436,13 @@ main .card .label {
 .home_form #input {
     width: 800px;
     height: 50px;
+}
+.border-none {
+    border: none;
+}
+.delete-btn {
+    display: none;
+ }
+.card:hover .delete-btn {
+    display: inline;
 }
