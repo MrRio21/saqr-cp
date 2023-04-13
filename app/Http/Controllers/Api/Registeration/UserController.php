@@ -10,14 +10,15 @@ use Symfony\Contracts\Service\Attribute\Required;
 
 class UserController extends Controller
 {
-    // public function index(){
-    //     $allUsers = User::all();
-    //     return view('admin.index',['allUsers'=>$allUsers]);
-    // }
+    public function index(){
+        $allUsers = User::all();
+        return response()->json(['data'=>$allUsers]);
+    }
     public function show ($userId){
         $showUser = User::find($userId);
         return $showUser;
     }
+
     public function store(Request $request){
         $request->validate([
             'f_name' => ['required', 'string', 'min:4'],
@@ -60,6 +61,9 @@ class UserController extends Controller
     $userID = $user->tokens;
     return response()->json(['token'=> $createToken],201);
 }
-
+    public function logout() {
+        auth()->logout();
+        return response()->json(201);
+    }
 
 }

@@ -34,10 +34,11 @@ Route::get('/allUsers',[UserController :: class ,"index"]);
 Route::get('/show{id}',[UserController :: class ,"show"]);
 Route::post('/signup',[UserController :: class ,"store"]);
 Route::post('/login',[UserController :: class ,"login"]);
+Route::get('/logout',[UserController :: class ,"logout"]);
 
 
 /////////// SocialMedia
-    Route::get('/socialMedia',[SocialMediaController :: class ,"index"])->name('socialMedia');
+    Route::get('/socialMedia',[SocialMediaController :: class ,"index"]);
 
 
 //////// about
@@ -59,7 +60,7 @@ Route::get('/program',[ProgramController :: class ,"index"]);
 Route::get('/program/show/{id}',[ProgramController :: class ,"show"]);
 
 ////////// admissionRequirements
-Route::get('/admissionRequirements',[AdmissionRequirementsController :: class ,"index"])->name('admissionRequirements');
+Route::get('/admissionRequirements',[AdmissionRequirementsController:: class ,"index"])->name('admissionRequirements');
 
 
     ////////// gallery

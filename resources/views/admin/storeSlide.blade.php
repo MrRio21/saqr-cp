@@ -16,7 +16,7 @@
         <input type="text" class="w-full p-10 b-none rad-6" id="input"  name="heading" class="form-control" placeholder="اسم الشريحة" required>
     </div>
 
-        <textarea name="description"  class=" form-control p-20 h-20 b-none rad-6" id="about-slide" placeholder="المضمون"  required></textarea>
+        <textarea name="description"  class=" form-control p-20 h-20 b-none rad-6" id="about-slide" placeholder="الوصف"  required></textarea>
 
 
     <div>

@@ -58,22 +58,17 @@ class GalleryController extends Controller
         'video' => 'required|mimetypes:video/mp4,video/quicktime|max:100000',
     ]);
 
-    $video = new Video;
-
     // Store the video file in the database
     if ($request->hasFile('video') && $request->file('video')->isValid()) {
-    // dd($video);
-
-        $videoFile = $request->file('video');
-        $videoFileName = time() . '.' . $videoFile->getClientOriginalExtension();
-        $videoFile->storeAs('public/videos', $videoFileName);
-        $video->file_name = $videoFileName;
-        $video->file_path = '/storage/videos/' . $videoFileName;
+        $video=md5(microtime()).$request->video->getClientOriginalName();
+        $request->video->storeAs("public/imgs",$video);
+        Video::create([
+        'video'=>$video
+        ]);
     }
-
     // dd($video);
-    $video->save();
-        // $video = Video::all();
+
+    // $video->save();
         Alert::success('تم اضافة فيديو ');
         return back();
     }
@@ -84,7 +79,7 @@ public function destroyImage($id){
     }
 
 
-    public function destroyVideo(string $id)
+    public function destroyVideo($id)
     {
         Video::find($id)->delete();
         return redirect()->back();
