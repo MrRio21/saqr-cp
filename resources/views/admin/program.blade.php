@@ -25,13 +25,13 @@
                     <td>{{$item['title']}}</td>
                     <td>{{$item['description']}}</td>
                     <td style='display:flex;align-items: center;gap:1rem'>
-                        <a href="{{route('editProgram',$item->id)}}" class="label btn-shape bg-green c-white" style='border-radius: 9999px;width:2.5rem;height: 2.5rem;display:flex;justify-content:center;align-items:center'><i class='bx bx-edit' style='font-size:1.3rem'></i></a>
+                        <a href="{{route('editProgram',$item->id)}}" class="label btn-shape bg-green c-white" style='border-radius: 9999px;width:2rem;height: 2rem;display:flex;justify-content:center;align-items:center'><i class='bx bx-edit' style='font-size:1.1rem'></i></a>
                     <form method="POST" action="{{route('deleteProgram',['id'=>$item->id])}}" accept-charset="UTF-8">
                         @csrf @method('delete')
                             <button class="label btn-shape bg-red c-white"
-                            style='border-radius: 9999px;width:2.5rem;height: 2.5rem;display:flex;justify-content:center;align-items:center'
+                            style='border-radius: 9999px;width:2rem;height: 2rem;display:flex;justify-content:center;align-items:center'
                                 onclick="return confirm('هل انت متاكد انك تريد الحذف ؟')"‏
-                                ><i class='bx bxs-trash' style='font-size:1.3rem'></i></button>
+                                ><i class='bx bxs-trash' style='font-size:1.1rem'></i></button>
                     </form>
                     </td>
                 </tr>

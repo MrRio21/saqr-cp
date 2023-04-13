@@ -3,7 +3,7 @@
 
 
 
-<section class="mb-20 p-20">
+<section class="section mb-20 p-20">
     <h2 class="p-20">تعديل برنامج</h2>
     <form class="home_form" action="{{ route('updateProgram', ['id'=>$editProgram->id]) }}"  enctype="multipart/form-data"   method="POST">
         @csrf
@@ -18,7 +18,7 @@
         @error('description')
         {{ $message }}
         @enderror
-        <input class="save d-block fs-14 bg-blue c-white b-none w-fit btn-shape" name="submit" type="submit" value="تعديل" />
+        <input class="save btn btn-primary w-fit" name="submit" type="submit" value="تعديل" />
         </form>
     </section>
 

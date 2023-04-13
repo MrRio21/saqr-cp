@@ -17,7 +17,8 @@
             @error('flyingHour')
             {{ $message }}
             @enderror
-            <input class="w-full p-10 b-none rad-6" id="input" type="file" name="image" />
+            <!-- <input class="w-full p-10 b-none rad-6" id="input" type="file" name="image" /> -->
+            <input type="file" name="image" id='input' class="form-control h-auto">
             @error('image')
             {{ $message }}
             @enderror

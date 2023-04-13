@@ -25,9 +25,10 @@
                <form method="POST" action="{{route('deleteTeamWork',['id'=>$item->id])}}" accept-charset="UTF-8">
                         @csrf @method('delete')
                         </td>
-                            <td><button class="btn btn-danger" style='border-radius: 99999px'
+                            <td><button class="btn btn-danger"  style='border-radius: 9999px;width:2rem;height: 2rem;display:flex;justify-content:center;align-items:center'
+                            title='حذف'
                                 onclick="return confirm('هل انت متاكد انك تريد الحذف?')"‏
-                                ><i class='bx bx-trash'></i></button>
+                                ><i class='bx bx-trash' style='font-size:1.1rem'></i></button>
                         </td>
                     </form>
                 </div>

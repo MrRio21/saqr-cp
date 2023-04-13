@@ -13,7 +13,7 @@
         @error('requirements')
         {{ $message }}
         @enderror
-        <input class="save d-block fs-14 bg-blue c-white b-none w-fit btn-shape" name="submit" type="submit" value="تعديل" />
+        <input class="save btn btn-primary w-fit" name="submit" type="submit" value="تعديل" />
         </form>
     </section>
 

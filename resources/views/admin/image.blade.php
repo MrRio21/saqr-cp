@@ -2,14 +2,6 @@
 @section('sidebar')
 @include('sweetalert::alert')
 
-
-<style>
-    #ima{
-/* "width: 287px"  */
-    }
-</style>
-
-
 <section class="section p-20 ">
         <div class="d-flex justify-content-between">
             <h2 class="p-10 "> الصور</h2>
@@ -18,7 +10,7 @@
             @enderror
             {{-- <button href="{{route('storeImage')}}"   class="btn btn-primary ">+</button> --}}
             <button type="button" class="btn btn-primary" data-toggle="modal" style="height: 40px" data-target="#exampleModal">اضافة صورة +</button>
-        </div>
+</div>
 
 
 <!-- Button trigger modal -->
@@ -63,11 +55,11 @@
             {{-- @dd($teamWork) --}}
     <div class="card text-white p-0" style='height: 250px'>
 <img class="card-img" src="{{url('http://localhost:8000/storage/imgs/'.$item->image)}}" id="ima" style='overflow: hidden; object-fit: cover;height: 100%' alt="Card image" >
-<div class="card-img-overlay" style='overflow: hidden;' data-toggle="modal" data-target="#exampleModal2">
+<div class="card-img-overlay" style='overflow: hidden;'>
 <form method="POST" action="{{route('deleteImage',['id'=>$item->id])}}" accept-charset="UTF-8">
 @csrf @method('delete')
-<button class="border-none btn-shape bg-red c-white delete-btn">
-    <i class='bx bx-trash'></i>
+<button onclick="return confirm('هل انت متاكد انك تريد الحذف')"‏ class="border-none btn-shape bg-red c-white delete-btn" style='border-radius: 9999px;width:2rem;height: 2rem;display:flex;justify-content:center;align-items:center'>
+    <i class='bx bx-trash' style='font-size:1.1rem'></i>
                 </button>
             </form>
 </div>
@@ -75,24 +67,7 @@
             @endforeach
         </div>
     </div>
-
-
 </section>
-
-<div class="modal fade" id="exampleModal2" tabindex="-1" aria-labelledby="exampleModalLabel2" aria-hidden="true">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel2">عرض الصورة </h5>
-        </button>
-      </div>
-      <div class="modal-body">
-        <img src="{{url('http://localhost:8000/storage/imgs/'.$item->image)}}" alt="show" style='width: 100%'>
-      </div>
-
-    </div>
-  </div>
-</div>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/2.9.3/umd/popper.min.js"></script>
