@@ -35,7 +35,7 @@ class UserController extends Controller
             'phone' => $request['phone'],
 
         ]);
-        
+
 
     $createToken = $users->createToken($request->email)->plainTextToken;
 
@@ -58,8 +58,8 @@ class UserController extends Controller
         ]);
     }
     $createToken = $user->createToken($request->email)->plainTextToken;
-    $userID = $user->tokens;
-    return response()->json(['token'=> $createToken],201);
+    $userID = $user->token;
+    return response()->json(['token'=> $createToken , 'user'=>$user]);
 }
     public function logout() {
         auth()->logout();

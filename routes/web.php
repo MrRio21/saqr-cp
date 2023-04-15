@@ -80,7 +80,7 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/editQuestions/{id}/edit', [CommonQuestionsController::class, 'edit'])->name('editQuestions');
     Route::put('/updateQuestions/{id}', [CommonQuestionsController::class ,'updated'])->name('updateQuestions');
     Route::delete('/deleteQuestions/{id}',[CommonQuestionsController :: class ,"destroy"])->name('deleteQuestions');
-  
+
     ////////// admissionRequirements
 
     Route::get('/admissionRequirements',[AdmissionRequirementsController :: class ,"index"])->name('admissionRequirements');
@@ -107,10 +107,13 @@ Route::middleware(['auth'])->group(function () {
     // Route::get('/storeSlide',[SlidesController :: class ,"create"])->name('storeSlide');
     Route::post('/storeSlide',[SlidesController :: class ,"store"])->name('storeSlide');
     Route::delete('/deleteSlide/{id}',[SlidesController :: class ,"destroy"])->name('deleteSlide');
-    
+
     ////////// book trip
     Route::get('/bookTrip',[BookTripController :: class ,"index"])->name('bookTrip');
     Route::delete('/deleteReservation/{id}',[BookTripController :: class ,"destroy"])->name('deleteReservation');
+    ////////// contact us
+    Route::get('/contact',[BookTripController :: class ,"index"])->name('contact');
+    Route::delete('/deleteContact/{id}',[BookTripController :: class ,"destroy"])->name('deleteContact');
 
 
 });

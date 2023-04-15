@@ -34,6 +34,7 @@
 			<li><a href="{{route('bookTrip')}}"><i class='bx bxs-train icon'></i>حجز الرحلات</a></li>
 			<li><a href="{{route('slides')}}"><i class='bx bxs-widget icon' ></i> الشرائح</a></li>
 			<li><a href="{{route('socialMedia')}}"><i class='bx bx-link-alt icon'></i> التواصل الاجتماعي</a></li>
+			<li><a href="{{route('contact')}}"><i class='bx bx-link-alt icon'></i> تواصل معنا</a></li>
 			<li><a href="{{route('commonQuestions')}}"><i class='bx bx-question-mark icon' ></i>الاسئلة الشائعة</a></li>
 
 		</ul>
